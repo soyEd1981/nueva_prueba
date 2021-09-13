@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personajes/NPC.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Topdown Shooter (620 assets)/PNG/JugadoresNPC/ManRed.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="CircleShape2D" id=2]
+resource_local_to_scene = true
+radius = 30.0
+
+[node name="NPC" groups=[
+"npc",
+] instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="Cuerpo" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="ZonaInteraccion" index="0"]
+shape = SubResource( 2 )
+
+[node name="LineaMira" parent="." index="6"]
+enabled = true
+cast_to = Vector2( 0, 200 )
+collision_mask = 5
+
+[node name="CollisionPolygon2D" parent="RangoVision" index="0"]
+polygon = PoolVector2Array( 11.766, -1.14966, 203.843, -105.69, 206.395, 84.955 )
+
+[connection signal="body_entered" from="RangoVision" to="." method="_on_RangoVision_body_entered"]
+[connection signal="body_exited" from="RangoVision" to="." method="_on_RangoVision_body_exited"]

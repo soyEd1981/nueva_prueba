@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Personajes/PersonajeBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Personajes/Jugador.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+resource_local_to_scene = true
+radius = 20.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[node name="Jugador" instance=ExtResource( 1 )]
+collision_mask = 14
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+current = true
+
+[node name="CollisionShape2D" parent="ZonaInteraccion" index="0"]
+position = Vector2( -1, 0 )
+shape = SubResource( 2 )
+
+[node name="LineaMira" parent="." index="7"]
+enabled = true
+cast_to = Vector2( 0, 200 )
+collision_mask = 14
+
+[node name="CollisionPolygon2D" parent="RangoVision" index="0"]
+polygon = PoolVector2Array( 11.766, -1.14966, 201.857, -92.7662, 203.541, 83.4604 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="RangoVision" to="." method="_on_RangoVision_body_entered"]
+[connection signal="body_exited" from="RangoVision" to="." method="_on_RangoVision_body_exited"]

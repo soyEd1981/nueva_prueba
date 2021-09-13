@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Topdown Shooter (620 assets)/PNG/torchmap.png" type="Texture" id=1]
+
+[node name="Lampara" type="Light2D"]
+position = Vector2( -302.56, 0 )
+texture = ExtResource( 1 )
+offset = Vector2( 302.56, 0 )
+shadow_enabled = true

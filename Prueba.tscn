@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Personajes/Jugador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prueba.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Mando.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/BotonInteraccion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Personajes/NPC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Personajes/Enemigo.tscn" type="PackedScene" id=6]
+
+[node name="Prueba" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -182.0
+margin_top = -96.0
+margin_right = 1182.0
+margin_bottom = 706.0
+color = Color( 0.262745, 0.376471, 0.380392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jugador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 1 )
+
+[node name="NPC" parent="." instance=ExtResource( 5 )]
+position = Vector2( 440.63, 240.496 )
+rotation = 3.13607
+
+[node name="Enemigo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 31.498, 388.056 )
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Mando" parent="GUI" instance=ExtResource( 3 )]
+position = Vector2( 109.316, 482.675 )
+
+[node name="BotonInteraccion" parent="GUI" instance=ExtResource( 4 )]
+position = Vector2( 887.987, 457.448 )
+
+[connection signal="pressed" from="GUI/BotonInteraccion" to="Jugador" method="_on_BotonInteraccion_pressed"]

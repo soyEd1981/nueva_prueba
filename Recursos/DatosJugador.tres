@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Recursos/DatosPersonaje.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nivel = 0
+experiencia = 0
+vitalidad = 0
+ataque = 0
+defensa = 0
+velocidad = 0
+inteligencia = 0
+hambre = 0
+sed = 0
+cansancio = 0
